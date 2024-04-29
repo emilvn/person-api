@@ -15,4 +15,11 @@ public class CountryInfoDTO {
     private String name;
     private Integer count;
     private List<CountryDTO> country;
+
+    public CountryDTO getMostLikelyCountry(){
+        if(country == null || country.isEmpty()){
+            return null;
+        }
+        return country.get(0);
+    }
 }

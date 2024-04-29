@@ -9,7 +9,6 @@ import org.springframework.web.client.RestClient;
 public class AgeService {
 
     private final RestClient restClient = RestClient.create("https://api.agify.io");
-    //TODO: Use WebClient/RestClient to call external API
 
     public AgeDTO getAgeData(String name){
         return restClient.get()

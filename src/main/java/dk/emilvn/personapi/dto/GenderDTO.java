@@ -13,5 +13,5 @@ public class GenderDTO {
     private String name;
     private Integer count;
     private String gender;
-    private Integer probability;
+    private Double probability;
 }

@@ -26,4 +26,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<?> handleUnexpectedException(UnexpectedException e) {
         return ResponseEntity.status(500).body(e.getMessage());
     }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<?> handleIllegalArgumentException(IllegalArgumentException e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
 }

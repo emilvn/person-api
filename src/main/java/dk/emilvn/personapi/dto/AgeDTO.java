@@ -13,4 +13,8 @@ public class AgeDTO {
     private String name;
     private Integer count;
     private Integer age;
+
+    public double getAgeProbability(){
+        return (double) count / 100;
+    }
 }
