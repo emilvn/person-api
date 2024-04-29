@@ -1,7 +1,7 @@
 package dk.emilvn.personapi.service;
 
 import dk.emilvn.personapi.dto.GenderDTO;
-import dk.emilvn.personapi.exception.HttpExceptionFactory;
+import dk.emilvn.personapi.exceptionhandling.exception.HttpException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
@@ -17,7 +17,7 @@ public class GenderService {
                 .onStatus(
                         status -> status.value() >= 400,
                         (request, response) -> {
-                            throw HttpExceptionFactory
+                            throw HttpException
                                     .of(response
                                             .getStatusCode()
                                             .value(),

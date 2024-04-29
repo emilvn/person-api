@@ -1,7 +1,7 @@
-package dk.emilvn.personapi.exception;
+package dk.emilvn.personapi.exceptionhandling.exception;
 
-public class HttpExceptionFactory {
-    public static RuntimeException of(int statusCode, String message) {
+public interface HttpException{
+    static RuntimeException of(int statusCode, String message) {
         return switch (statusCode) {
             case 400 -> new BadRequestException(message);
             case 404 -> new NotFoundException(message);

@@ -1,5 +1,9 @@
-package dk.emilvn.personapi.exception;
+package dk.emilvn.personapi.exceptionhandling;
 
+import dk.emilvn.personapi.exceptionhandling.exception.BadRequestException;
+import dk.emilvn.personapi.exceptionhandling.exception.InternalServerException;
+import dk.emilvn.personapi.exceptionhandling.exception.NotFoundException;
+import dk.emilvn.personapi.exceptionhandling.exception.UnexpectedException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
