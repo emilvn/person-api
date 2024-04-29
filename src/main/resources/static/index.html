@@ -5,11 +5,28 @@
     <title>Person API</title>
 </head>
 <body>
-    <h1>Person API</h1>
-    <p>This is a simple API to get statistics about your name</p>
-    <h3>Endpoints</h3>
-    <div>
-        <p>POST /api/v1/person/{name}</p>
-    </div>
+<div style="display: flex; flex-direction: column; gap: 1em;">
+
+    <code style="font-size: 3em; font-weight: bold">Person API</code>
+    <code>This is a simple API to get statistics about your name</code>
+    <code style="font-size: 2em; font-weight: bold">Endpoints</code>
+    <code style="font-size: 2em; padding-left: 1em"><b>POST</b> /api/people</code>
+    <code style="padding-left: 2em">Request body example:</code>
+    <code style="padding-left: 4em">
+        {
+            "firstName": "John",
+            "lastName": "Doe"
+        }
+    </code>
+    <code style="padding-left: 2em; font-weight: bold">firstName or name must be present.</code>
+    <code style="padding-left: 2em">middleName and lastName are optional.</code>
+    <code style="font-size: 2em; padding-left: 1em; margin-top: 1em"><b>GET</b> /api/people</code>
+    <code style="padding-left: 2em">Uses Request parameters to search for names. Examples:</code>
+    <code style="padding-left: 4em">/api/people?firstName=John&lastName=Doe</code>
+    <code style="padding-left: 4em">/api/people?firstName=John</code>
+    <code style="padding-left: 4em">/api/people?name=John Doe</code>
+    <code style="padding-left: 2em; font-weight: bold">Either firstName or name must be present.</code>
+    <code style="padding-left: 2em">middleName and lastName are optional.</code>
+</div>
 </body>
 </html>
