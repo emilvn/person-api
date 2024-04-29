@@ -1,4 +1,4 @@
-package com.example.personapi;
+package dk.emilvn.personapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
