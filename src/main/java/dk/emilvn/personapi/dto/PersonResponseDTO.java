@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class PersonResponseDTO {
+public class PersonResponseDTO implements PersonDTO{
     private String firstName;
     private String middleName;
     private String lastName;
@@ -16,36 +16,46 @@ public class PersonResponseDTO {
     private String country;
     private double countryProbability;
 
-    @JsonGetter
-    public String getFullName() {
-        if(getLastName() == null){
-            return firstName;
-        }
-        if(getMiddleName() == null){
-            return firstName + " " + lastName;
-        }
-        return firstName + " " + middleName + " " + lastName;
-    }
-
     public static PersonResponseDTO create(){
         return new PersonResponseDTO();
+    }
+
+    public PersonResponseDTO ageData(AgeDTO ageData){
+        this.age = ageData.getAge();
+        return this;
+    }
+
+    public PersonResponseDTO genderData(GenderDTO genderData) {
+        this.gender = genderData.getGender();
+        this.genderProbability = genderData.getProbability();
+        return this;
+    }
+
+    public PersonResponseDTO countryData(CountryInfoDTO countryData) {
+        var country = countryData.getMostLikelyCountry();
+        this.country = country.getCountry_id();
+        this.countryProbability = country.getProbability();
+        return this;
     }
 
     public PersonResponseDTO firstName(String firstName) {
         if(firstName == null){
             throw new IllegalArgumentException("First name cannot be null");
         }
-        this.firstName = firstName;
+        setFirstName(firstName);
         return this;
     }
-
     public PersonResponseDTO middleName(String middleName) {
-        this.middleName = middleName;
+        setMiddleName(middleName);
+        return this;
+    }
+    public PersonResponseDTO lastName(String lastName) {
+        setLastName(lastName);
+        return this;
+    }
+    public PersonResponseDTO fullName(String fullName) {
+        setFullName(fullName);
         return this;
     }
 
-    public PersonResponseDTO lastName(String lastName) {
-        this.lastName = lastName;
-        return this;
-    }
 }

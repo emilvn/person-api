@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PersonRequestDTO {
+public class PersonRequestDTO implements PersonDTO{
     private String firstName;
     private String middleName;
     private String lastName;
@@ -37,28 +37,7 @@ public class PersonRequestDTO {
     }
 
     public PersonRequestDTO fullName(String fullName) {
-        if(fullName == null){
-            throw new IllegalArgumentException("Full name cannot be null");
-        }
-        fullName = fullName.trim();
-        int firstSpace = fullName.indexOf(" ");
-        int lastSpace = fullName.lastIndexOf(" ");
-
-        if(firstSpace == -1){
-            setFirstName(fullName);
-            setMiddleName(null);
-            setLastName(null);
-        }
-        else if(firstSpace == lastSpace){
-            setFirstName(fullName.substring(0, firstSpace));
-            setMiddleName(null);
-            setLastName(fullName.substring(lastSpace+1));
-        }
-        else {
-            setFirstName(fullName.substring(0, firstSpace));
-            setMiddleName(fullName.substring(firstSpace+1, lastSpace));
-            setLastName(fullName.substring(lastSpace+1));
-        }
+        setFullName(fullName);
         return this;
     }
 }

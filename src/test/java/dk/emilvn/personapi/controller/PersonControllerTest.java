@@ -145,7 +145,7 @@ class PersonControllerTest {
     }
 
     @Test
-    void getPersonInfoPostRequest() {
+    void postPersonInfoCompleteRequest() {
         webTestClient
                 .post().uri("/api/people")
                 .header("Content-Type", "application/json")
@@ -174,7 +174,7 @@ class PersonControllerTest {
     }
 
     @Test
-    void getPersonInfoPostRequestWithOnlyFirstName() {
+    void postPersonInfoWithOnlyFirstName() {
         webTestClient
                 .post().uri("/api/people")
                 .header("Content-Type", "application/json")
@@ -201,7 +201,7 @@ class PersonControllerTest {
     }
 
     @Test
-    void getPersonInfoPostRequestNoFirstname(){
+    void postPersonInfoNoFirstname(){
         webTestClient
                 .post().uri("/api/people")
                 .header("Content-Type", "application/json")
