@@ -23,6 +23,7 @@ public class PersonService {
         if(!cache.isEmpty()){
             for (PersonResponseDTO person : cache) {
                 if(person.getFirstName().equals(personRequest.getFirstName())){
+                    System.out.println("Using cached person data");
                     return person
                             .firstName(personRequest.getFirstName())
                             .middleName(personRequest.getMiddleName())
@@ -30,6 +31,7 @@ public class PersonService {
                 }
             }
         }
+        System.out.println("Fetching new person data");
         var person = PersonResponseDTO
                 .create()
                 .firstName(personRequest.getFirstName())
