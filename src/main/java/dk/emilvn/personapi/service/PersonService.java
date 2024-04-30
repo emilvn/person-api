@@ -6,9 +6,6 @@ import dk.emilvn.personapi.util.PersonCache;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Service
 public class PersonService {
     @Getter
@@ -27,7 +24,7 @@ public class PersonService {
             throw new IllegalArgumentException("First name cannot be null");
         }
         if(!cache.isEmpty()){
-            var person = cache.get(personRequest.getFirstName());
+            var person = cache.get(personRequest);
             if(person != null){
                 System.out.println("Using cached person data");
                 return person.fullName(personRequest.getFullName());
@@ -35,9 +32,9 @@ public class PersonService {
         }
 
         System.out.println("Fetching new person data");
-        var ageData = ageService.getAgeData(personRequest.getFirstName());
-        var genderData = genderService.getGenderData(personRequest.getFirstName());
-        var countryData = countryService.getCountryData(personRequest.getFirstName());
+        var ageData = ageService.getAgeData(personRequest.getFullName());
+        var genderData = genderService.getGenderData(personRequest.getFullName());
+        var countryData = countryService.getCountryData(personRequest.getFullName());
 
         var person = PersonResponseDTO
                 .create()

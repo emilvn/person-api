@@ -1,5 +1,6 @@
 package dk.emilvn.personapi.util;
 
+import dk.emilvn.personapi.dto.PersonRequestDTO;
 import dk.emilvn.personapi.dto.PersonResponseDTO;
 import lombok.NoArgsConstructor;
 
@@ -15,9 +16,14 @@ public class PersonCache{
         this.MAX_SIZE = maxSize;
     }
 
-    public PersonResponseDTO get(String firstName){
+    public PersonResponseDTO get(PersonRequestDTO personRequest){
         for (PersonResponseDTO person : cache) {
-            if(person.getFirstName().equals(firstName)){
+            if(personRequest.getLastName() == null){
+                return null;
+            }
+            var isSameFirstName = personRequest.getFirstName().equalsIgnoreCase(person.getFirstName());
+            var isSameLastName = personRequest.getLastName().equalsIgnoreCase(person.getLastName());
+            if(isSameFirstName && isSameLastName){
                 return person;
             }
         }
